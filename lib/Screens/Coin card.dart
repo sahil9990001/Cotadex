@@ -171,7 +171,7 @@ class _CoinState extends State<Coin> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'MARKET CAP',
+                      'PRICE',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         fontStyle: FontStyle.italic,
@@ -185,9 +185,7 @@ class _CoinState extends State<Coin> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return Text(
-                            ((snapshot.data!.price) *
-                                    double.parse(widget.calculatingSupply))
-                                .toString(),
+                            snapshot.data!.price.toString(),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                               fontStyle: FontStyle.italic,
@@ -261,7 +259,7 @@ class _CoinState extends State<Coin> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'LIQUIDITY',
+                      'MARKET CAP',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         fontStyle: FontStyle.italic,
@@ -270,16 +268,33 @@ class _CoinState extends State<Coin> {
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      "100,000",
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.lato(
-                        fontStyle: FontStyle.italic,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.white,
-                      ),
-                    ),
+                    FutureBuilder<Data2>(
+                      future: getVolumeData(widget.marketAddress),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text(
+                            ((snapshot.data!.price) *
+                                    double.parse(widget.calculatingSupply))
+                                .toString(),
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.white,
+                            ),
+                          );
+                        } else if (snapshot.hasError) {
+                          return Text('${snapshot.error}');
+                        }
+
+                        // By default, show a loading spinner.
+                        return Text(
+                          'Loading.....',
+                          style: TextStyle(color: Colors.white),
+                        );
+                      },
+                    )
                   ],
                 ),
               ),
@@ -350,7 +365,20 @@ class _CoinState extends State<Coin> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return Text(
-                            snapshot.data!.tokenInfo.supply.toString(),
+                            (int.parse(snapshot.data!.tokenInfo.supply) != 0 &&
+                                    snapshot.data!.tokenInfo.supply
+                                            .toString()
+                                            .length >
+                                        0)
+                                ? snapshot.data!.tokenInfo.supply
+                                    .toString()
+                                    .substring(
+                                        0,
+                                        snapshot.data!.tokenInfo.supply
+                                                .toString()
+                                                .length -
+                                            snapshot.data!.tokenInfo.decimals)
+                                : snapshot.data!.tokenInfo.supply.toString(),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                               fontStyle: FontStyle.italic,
@@ -448,8 +476,8 @@ class _CoinState extends State<Coin> {
                       borderRadius: BorderRadius.circular(10)),
                   child: FlatButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     child: Text(
                       'TRADE NOW',

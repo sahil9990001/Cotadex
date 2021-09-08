@@ -30,7 +30,7 @@ class HolderApi {
 
 class Data1 {
   Data1({
-    required this.symbol,
+    // required this.symbol,
     required this.name,
     required this.icon,
     required this.website,
@@ -41,7 +41,7 @@ class Data1 {
     required this.holder,
   });
 
-  String symbol;
+  // String symbol;
   String name;
   String icon;
   String website;
@@ -52,7 +52,7 @@ class Data1 {
   int holder;
 
   factory Data1.fromJson(Map<String, dynamic> json) => Data1(
-        symbol: json["symbol"],
+        // symbol: json["symbol"],
         name: json["name"],
         icon: json["icon"],
         website: json["website"],
@@ -64,7 +64,7 @@ class Data1 {
       );
 
   Map<String, dynamic> toJson() => {
-        "symbol": symbol,
+        // "symbol": symbol,
         "name": name,
         "icon": icon,
         "website": website,

@@ -11,13 +11,13 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
+  late List<Welcome> listData;
+  HomePage({required this.listData});
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<dynamic> json;
-  List<Welcome> listData = [];
   var loading = false;
   final TextEditingController _filter = new TextEditingController();
 
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       if (_filter.text.isEmpty) {
         setState(() {
           _searchText = "";
-          filteredNames = listData;
+          filteredNames = widget.listData;
         });
       } else {
         setState(() {
@@ -51,27 +51,6 @@ class _HomePageState extends State<HomePage> {
         });
       }
     });
-  }
-
-  Future<Null> getData() async {
-    setState(() {
-      loading = true;
-    });
-    Response response = await get(Uri.parse(
-        "https://raw.githubusercontent.com/SOL-CAT/catodata/master/catoapidata.json"));
-    if (response.statusCode == 200) {
-      var jsonString = response.body;
-      final l = jsonDecode(jsonString);
-      setState(() {
-        for (Map i in l) {
-          listData.add(Welcome.fromJson(i));
-        }
-        // print(listData);
-        loading = false;
-      });
-    } else {
-      throw ("Can't fetch data");
-    }
   }
 
   void _searchPressed() {
@@ -109,16 +88,10 @@ class _HomePageState extends State<HomePage> {
             color: Colors.white,
           ),
         );
-        filteredNames = listData;
+        filteredNames = widget.listData;
         _filter.clear();
       }
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
   }
 
   @override
@@ -267,7 +240,7 @@ class _HomePageState extends State<HomePage> {
       }
       filteredNames = tempList;
     } else {
-      filteredNames = listData;
+      filteredNames = widget.listData;
     }
     return ListView.builder(
       itemCount: filteredNames.length + 1,
@@ -299,7 +272,7 @@ class _HomePageState extends State<HomePage> {
         Uri.parse("https://api.dexlab.space/v1/volumes/$marketAddress"));
     if (response.statusCode == 200) {
       var jsonString = response.body;
-      final l = jsonDecode(jsonString)['data'];
+      final l = jsonDecode(jsonString);
       var json = Data2.fromJson(l);
       print(json);
       return json;
