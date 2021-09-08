@@ -319,9 +319,7 @@ class _CoinState extends State<Coin> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return Text(
-                            (double.parse(snapshot.data!.holder.toString()) *
-                                    double.parse(widget.calculatingSupply))
-                                .toString(),
+                            snapshot.data!.holder.toString(),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                               fontStyle: FontStyle.italic,
