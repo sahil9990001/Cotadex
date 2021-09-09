@@ -85,7 +85,9 @@ class _CoinState extends State<Coin> {
     }
   }
 
-  bool _loaded = false;
+  RegExp reg = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
+  String Function(Match) mathFunc = (Match match) => '${match[1]},';
+  // bool _loaded = false;
 // var img = Image.network(widget.tokenLogo);
 // var placeholder = AssetImage(assetName)
 
@@ -151,7 +153,9 @@ class _CoinState extends State<Coin> {
                             Container(
                               width: 200,
                               child: Text(
-                                widget.tokenpair,
+                                widget.tokenpair == ''
+                                    ? 'Unavailable'
+                                    : widget.tokenpair,
                                 textAlign: TextAlign.left,
                                 style: GoogleFonts.lato(
                                   fontStyle: FontStyle.normal,
@@ -264,7 +268,9 @@ class _CoinState extends State<Coin> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return Text(
-                            snapshot.data!.summary.totalVolume.toString(),
+                            snapshot.data!.summary.totalVolume
+                                .toString()
+                                .replaceAllMapped(reg, mathFunc),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                               fontStyle: FontStyle.italic,
@@ -315,11 +321,17 @@ class _CoinState extends State<Coin> {
                     FutureBuilder<Data2>(
                       future: getVolumeData(widget.marketAddress),
                       builder: (context, snapshot) {
+                        // print(snapshot.data!.price);
+                        // print(widget.calculatingSupply.toString());
                         if (snapshot.hasData) {
                           return Text(
-                            ((snapshot.data!.price) *
-                                    double.parse(widget.calculatingSupply))
-                                .toString(),
+                            widget.calculatingSupply == ""
+                                ? 'Data Unavailable'
+                                : ((snapshot.data!.price) *
+                                        double.parse(widget.calculatingSupply
+                                            .replaceAll(',', '')))
+                                    .toString()
+                                    .replaceAllMapped(reg, mathFunc),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                               fontStyle: FontStyle.italic,
@@ -372,7 +384,9 @@ class _CoinState extends State<Coin> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return Text(
-                            snapshot.data!.holder.toString(),
+                            snapshot.data!.holder
+                                .toString()
+                                .replaceAllMapped(reg, mathFunc),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                               fontStyle: FontStyle.italic,
@@ -425,20 +439,27 @@ class _CoinState extends State<Coin> {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return Text(
-                            (int.parse(snapshot.data!.tokenInfo.supply) != 0 &&
-                                    snapshot.data!.tokenInfo.supply
+                            (snapshot.data!.tokenInfo.supply
+                                        .toString()
+                                        .length ==
+                                    1)
+                                ? snapshot.data!.tokenInfo.supply.toString()
+                                : (snapshot.data!.tokenInfo.supply
                                             .toString()
                                             .length >
                                         0)
-                                ? snapshot.data!.tokenInfo.supply
-                                    .toString()
-                                    .substring(
-                                        0,
-                                        snapshot.data!.tokenInfo.supply
-                                                .toString()
-                                                .length -
-                                            snapshot.data!.tokenInfo.decimals)
-                                : snapshot.data!.tokenInfo.supply.toString(),
+                                    ? snapshot.data!.tokenInfo.supply
+                                        .toString()
+                                        .substring(
+                                            0,
+                                            snapshot.data!.tokenInfo.supply
+                                                    .toString()
+                                                    .length -
+                                                snapshot
+                                                    .data!.tokenInfo.decimals)
+                                        .replaceAllMapped(reg, mathFunc)
+                                    : snapshot.data!.tokenInfo.supply
+                                        .toString(),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.lato(
                               fontStyle: FontStyle.italic,

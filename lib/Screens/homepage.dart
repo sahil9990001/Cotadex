@@ -367,7 +367,9 @@ class _HomePageState extends State<HomePage> {
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                     Text(
-                                      ndata.tokenPair,
+                                      ndata.tokenPair == ''
+                                          ? 'Unavailable'
+                                          : ndata.tokenPair,
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.lato(
                                         fontStyle: FontStyle.normal,
