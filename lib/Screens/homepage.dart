@@ -356,7 +356,9 @@ class _HomePageState extends State<HomePage> {
                                 child: Container(
                                     width: 60,
                                     height: 60,
-                                    child: Image.network(ndata.tokenLogo))),
+                                    child: FadeInImage.assetNetwork(
+                                        placeholder: 'assets/step.png',
+                                        image: ndata.tokenLogo))),
                             Padding(
                               padding: EdgeInsets.only(top: 5, left: 30),
                               child: Container(

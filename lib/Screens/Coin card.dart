@@ -85,6 +85,20 @@ class _CoinState extends State<Coin> {
     }
   }
 
+  bool _loaded = false;
+// var img = Image.network(widget.tokenLogo);
+// var placeholder = AssetImage(assetName)
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   img.image.resolve(ImageConfiguration()).addListener((i, b) {
+  //     if (mounted) {
+  //       setState(() => _loaded = true);
+  //     }
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -125,7 +139,9 @@ class _CoinState extends State<Coin> {
                         child: Container(
                             width: 100,
                             height: 100,
-                            child: Image.network(widget.tokenLogo))),
+                            child: FadeInImage.assetNetwork(
+                                placeholder: 'assets/step.png',
+                                image: widget.tokenLogo))),
                     Padding(
                       padding: EdgeInsets.only(top: 5, left: 20),
                       child: Column(
@@ -205,7 +221,16 @@ class _CoinState extends State<Coin> {
                             ),
                           );
                         } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
+                          return Text(
+                            'Data Unavailable',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.white,
+                            ),
+                          );
                         }
 
                         // By default, show a loading spinner.
@@ -249,7 +274,16 @@ class _CoinState extends State<Coin> {
                             ),
                           );
                         } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
+                          return Text(
+                            'Data Unavailable',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.white,
+                            ),
+                          );
                         }
 
                         // By default, show a loading spinner.
@@ -295,7 +329,16 @@ class _CoinState extends State<Coin> {
                             ),
                           );
                         } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
+                          return Text(
+                            'Data Unavailable',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.white,
+                            ),
+                          );
                         }
 
                         // By default, show a loading spinner.
@@ -339,7 +382,16 @@ class _CoinState extends State<Coin> {
                             ),
                           );
                         } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
+                          return Text(
+                            'Data Unavailable',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.white,
+                            ),
+                          );
                         }
 
                         // By default, show a loading spinner.
@@ -396,7 +448,16 @@ class _CoinState extends State<Coin> {
                             ),
                           );
                         } else if (snapshot.hasError) {
-                          return Text('${snapshot.error}');
+                          return Text(
+                            'Data Unavailable',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.white,
+                            ),
+                          );
                         }
 
                         // By default, show a loading spinner.
