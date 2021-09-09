@@ -465,7 +465,9 @@ class _CoinState extends State<Coin> {
                       child: Container(
                           alignment: Alignment.centerRight,
                           height: 70,
-                          child: Image.asset('assets/Telegram.png')),
+                          child: Image.asset(
+                            'assets/Telegram_1.png',
+                          )),
                     ),
                   )
                 ],
