@@ -117,56 +117,63 @@ class _CoinState extends State<Coin> {
                             fontWeight: FontWeight.w200))),
               ),
               Container(
-                  child: Row(children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.only(top: 5, left: 30),
-                    child: Container(
-                        width: 100,
-                        height: 100,
-                        child: Image.network(widget.tokenLogo))),
-                Padding(
-                  padding: EdgeInsets.only(top: 5, left: 20),
-                  child: Container(
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(top: 5, left: 30),
+                        child: Container(
+                            width: 100,
+                            height: 100,
+                            child: Image.network(widget.tokenLogo))),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5, left: 20),
                       child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                        Text(
-                          widget.tokenpair,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.lato(
-                            fontStyle: FontStyle.normal,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 30),
-                          child: Text(
-                            widget.tokenname,
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.lato(
-                              fontStyle: FontStyle.italic,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.white,
+                            Container(
+                              width: 200,
+                              child: Text(
+                                widget.tokenpair,
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.lato(
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        Text(
-                          widget.tokenDiscription,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.lato(
-                            fontStyle: FontStyle.italic,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ])),
-                )
-              ])),
+                            Padding(
+                              padding: EdgeInsets.only(right: 30),
+                              child: Text(
+                                widget.tokenname,
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.lato(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 200,
+                              child: Text(
+                                widget.tokenDiscription,
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.lato(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ]),
+                    )
+                  ])),
               Padding(
                 padding:
                     const EdgeInsets.only(left: 30.0, right: 30.0, top: 40),

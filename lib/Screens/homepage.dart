@@ -352,13 +352,13 @@ class _HomePageState extends State<HomePage> {
                           Container(
                               child: Row(children: <Widget>[
                             Padding(
-                                padding: EdgeInsets.only(top: 5, left: 15),
+                                padding: EdgeInsets.only(top: 5, left: 20),
                                 child: Container(
                                     width: 60,
                                     height: 60,
                                     child: Image.network(ndata.tokenLogo))),
                             Padding(
-                              padding: EdgeInsets.only(top: 5, left: 20),
+                              padding: EdgeInsets.only(top: 5, left: 30),
                               child: Container(
                                   child: Column(
                                       crossAxisAlignment:
@@ -369,7 +369,7 @@ class _HomePageState extends State<HomePage> {
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.lato(
                                         fontStyle: FontStyle.normal,
-                                        fontSize: 18,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.w400,
                                         color: Colors.white,
                                       ),
@@ -389,19 +389,19 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ])),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 5, left: 30),
-                              child: Text(
-                                '0.711',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.lato(
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: EdgeInsets.only(top: 5, left: 30),
+                            //   child: Text(
+                            //     '0.711',
+                            //     textAlign: TextAlign.center,
+                            //     style: GoogleFonts.lato(
+                            //       fontStyle: FontStyle.italic,
+                            //       fontSize: 10,
+                            //       fontWeight: FontWeight.w300,
+                            //       color: Colors.white,
+                            //     ),
+                            //   ),
+                            // ),
                           ])),
                         ],
                       ),
