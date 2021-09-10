@@ -112,11 +112,13 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           toolbarHeight: MediaQuery.of(context).size.height / 15,
-          title: Center(
+          title: Padding(
+            padding: const EdgeInsets.only(left: 35.0),
             child: Text(
               "COIN TRACKER",
               textAlign: TextAlign.start,
-              style: GoogleFonts.lato(
+              style: TextStyle(
+                fontFamily: 'Berlin',
                 fontStyle: FontStyle.normal,
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
@@ -315,6 +317,7 @@ class _HomePageState extends State<HomePage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => Coin(
+                                tradeNow: ndata.tradenow,
                                 websiteLink: ndata.wesbite,
                                 twitter: ndata.twitter,
                                 discord: ndata.discord,
@@ -357,7 +360,7 @@ class _HomePageState extends State<HomePage> {
                                     width: 60,
                                     height: 60,
                                     child: FadeInImage.assetNetwork(
-                                        placeholder: 'assets/step.png',
+                                        placeholder: 'assets/Logo.png',
                                         image: ndata.tokenLogo))),
                             Padding(
                               padding: EdgeInsets.only(top: 5, left: 30),

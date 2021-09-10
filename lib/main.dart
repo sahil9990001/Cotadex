@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Splash Screen',
+      title: 'CATODEX',
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),

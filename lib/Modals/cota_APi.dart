@@ -19,6 +19,7 @@ class Welcome {
     required this.discord,
     required this.telegram,
     required this.circulatingSupply,
+    required this.tradenow,
   });
 
   String tokenName;
@@ -32,22 +33,23 @@ class Welcome {
   String discord;
   String telegram;
   String circulatingSupply;
+  String tradenow;
 
   factory Welcome.fromJson(Map<dynamic, dynamic> json) => Welcome(
-        tokenName: json["token_name"],
-        tokenPair: json["token_pair"],
-        tokenDescription: json["token_description"] == null
-            ? 'null'
-            : json["token_description"],
-        marketAddress: json["market_address"],
-        tokenAddress: json["token_address"],
-        tokenLogo: json["token_logo"],
-        wesbite: json["wesbite"],
-        twitter: json["twitter"],
-        discord: json["discord"],
-        telegram: json["telegram"],
-        circulatingSupply: json["circulating_supply"],
-      );
+      tokenName: json["token_name"],
+      tokenPair: json["token_pair"],
+      tokenDescription: json["token_description"] == null
+          ? 'null'
+          : json["token_description"],
+      marketAddress: json["market_address"],
+      tokenAddress: json["token_address"],
+      tokenLogo: json["token_logo"],
+      wesbite: json["wesbite"],
+      twitter: json["twitter"],
+      discord: json["discord"],
+      telegram: json["telegram"],
+      circulatingSupply: json["circulating_supply"],
+      tradenow: json["tradenow"]);
 
   Map<String, dynamic> toJson() => {
         "token_name": tokenName,
@@ -61,5 +63,6 @@ class Welcome {
         "discord": discord,
         "telegram": telegram,
         "circulating_supply": circulatingSupply,
+        "tradenow": tradenow
       };
 }

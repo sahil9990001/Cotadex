@@ -2,7 +2,7 @@
     package="com.example.cato">
      <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="cato"
+        android:label="CATODEX"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

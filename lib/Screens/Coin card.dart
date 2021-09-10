@@ -7,12 +7,14 @@ import 'package:cato/Screens/homepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Coin extends StatefulWidget {
+  String tradeNow;
   String websiteLink;
   String twitter;
   String discord;
@@ -25,6 +27,7 @@ class Coin extends StatefulWidget {
   String tokenname;
   String tokenLogo;
   Coin({
+    required this.tradeNow,
     required this.discord,
     required this.telegram,
     required this.twitter,
@@ -142,7 +145,7 @@ class _CoinState extends State<Coin> {
                             width: 100,
                             height: 100,
                             child: FadeInImage.assetNetwork(
-                                placeholder: 'assets/step.png',
+                                placeholder: 'assets/Logo.png',
                                 image: widget.tokenLogo))),
                     Padding(
                       padding: EdgeInsets.only(top: 5, left: 20),
@@ -518,8 +521,13 @@ class _CoinState extends State<Coin> {
                           left: 0.0, right: 20, top: 30, bottom: 0),
                       child: Container(
                           alignment: Alignment.centerRight,
-                          height: 50,
-                          child: Image.asset('assets/twitter.png')),
+                          height: 55,
+                          width: 55,
+                          child: SvgPicture.asset(
+                            'assets/twitter.svg',
+                            height: 60,
+                            width: 60,
+                          )),
                     ),
                   ),
                   InkWell(
@@ -533,7 +541,8 @@ class _CoinState extends State<Coin> {
                       child: Container(
                           alignment: Alignment.centerRight,
                           height: 50,
-                          child: Image.asset('assets/discord.png')),
+                          width: 50,
+                          child: SvgPicture.asset('assets/discord.svg')),
                     ),
                   ),
                   InkWell(
@@ -546,9 +555,12 @@ class _CoinState extends State<Coin> {
                           left: 0.0, right: 10, top: 30, bottom: 0),
                       child: Container(
                           alignment: Alignment.centerRight,
-                          height: 70,
-                          child: Image.asset(
-                            'assets/Telegram_1.png',
+                          height: 55,
+                          width: 55,
+                          child: SvgPicture.asset(
+                            'assets/telegram.svg',
+                            height: 60,
+                            width: 60,
                           )),
                     ),
                   )
@@ -568,8 +580,7 @@ class _CoinState extends State<Coin> {
                       borderRadius: BorderRadius.circular(10)),
                   child: FlatButton(
                     onPressed: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => HomePage()));
+                      launch(widget.tradeNow);
                     },
                     child: Text(
                       'TRADE NOW',

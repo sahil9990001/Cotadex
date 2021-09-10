@@ -2,6 +2,8 @@ import 'package:cato/Screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -55,10 +57,12 @@ class NavDrawer extends StatelessWidget {
                 onTap: () => {Navigator.of(context).pop()},
               ),
               ListTile(
-                leading:
-                    Icon(Icons.dynamic_feed_outlined, color: Colors.black87),
+                leading: CircleAvatar(
+                  radius: 12,
+                  child: SvgPicture.asset('assets/catodex.svg'),
+                ),
                 title: Text(
-                  'FEEDBACK',
+                  'CATOdex',
                   style: TextStyle(
                       fontFamily: "Montserrat",
                       fontStyle: FontStyle.normal,
@@ -66,15 +70,15 @@ class NavDrawer extends StatelessWidget {
                       color: Colors.black87,
                       fontWeight: FontWeight.w400),
                 ),
-                onTap: () => {Navigator.of(context).pop()},
+                onTap: () => {launch('https://catodex.com/')},
               ),
               ListTile(
-                leading: Icon(
-                  Icons.question_answer_rounded,
-                  color: Colors.black87,
+                leading: CircleAvatar(
+                  radius: 12,
+                  child: SvgPicture.asset('assets/update.svg'),
                 ),
                 title: Text(
-                  'FAQ',
+                  'UPDATES',
                   style: TextStyle(
                       fontFamily: "Montserrat",
                       fontStyle: FontStyle.normal,
@@ -82,7 +86,9 @@ class NavDrawer extends StatelessWidget {
                       color: Colors.black87,
                       fontWeight: FontWeight.w400),
                 ),
-                onTap: () => {Navigator.of(context).pop()},
+                onTap: () => {
+                  launch('https://official.catodex.com/catoapp-updates/updates')
+                },
               ),
               ListTile(
                 leading: Icon(Icons.person_pin, color: Colors.black87),
@@ -95,7 +101,7 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 25,
                       color: Colors.black87),
                 ),
-                onTap: () => {Navigator.of(context).pop()},
+                onTap: () => {launch('https://t.me/joinchat/oPtrSEdqQsIzN2Jl')},
               ),
               ListTile(
                 leading: Icon(Icons.add_box_outlined, color: Colors.black87),
@@ -108,7 +114,7 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 25,
                       color: Colors.black87),
                 ),
-                onTap: () => {Navigator.of(context).pop()},
+                onTap: () => {launch('https://official.catodex.com/')},
               ),
             ],
           ),
