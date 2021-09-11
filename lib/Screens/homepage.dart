@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.transparent,
           toolbarHeight: MediaQuery.of(context).size.height / 15,
           title: Padding(
-            padding: const EdgeInsets.only(left: 35.0),
+            padding: EdgeInsets.only(left: 45.0),
             child: Text(
               "COIN TRACKER",
               textAlign: TextAlign.start,

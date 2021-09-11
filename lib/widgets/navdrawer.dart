@@ -57,9 +57,10 @@ class NavDrawer extends StatelessWidget {
                 onTap: () => {Navigator.of(context).pop()},
               ),
               ListTile(
-                leading: CircleAvatar(
-                  radius: 12,
-                  child: SvgPicture.asset('assets/catodex.svg'),
+                leading: Image.asset(
+                  'assets/catodex.png',
+                  height: 26,
+                  width: 26,
                 ),
                 title: Text(
                   'CATOdex',
@@ -73,9 +74,10 @@ class NavDrawer extends StatelessWidget {
                 onTap: () => {launch('https://catodex.com/')},
               ),
               ListTile(
-                leading: CircleAvatar(
-                  radius: 12,
-                  child: SvgPicture.asset('assets/update.svg'),
+                leading: Image.asset(
+                  'assets/update.png',
+                  height: 22,
+                  width: 22,
                 ),
                 title: Text(
                   'UPDATES',

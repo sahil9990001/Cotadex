@@ -272,6 +272,7 @@ class _CoinState extends State<Coin> {
                         if (snapshot.hasData) {
                           return Text(
                             snapshot.data!.summary.totalVolume
+                                .toInt()
                                 .toString()
                                 .replaceAllMapped(reg, mathFunc),
                             textAlign: TextAlign.center,
@@ -333,6 +334,7 @@ class _CoinState extends State<Coin> {
                                 : ((snapshot.data!.price) *
                                         double.parse(widget.calculatingSupply
                                             .replaceAll(',', '')))
+                                    .toInt()
                                     .toString()
                                     .replaceAllMapped(reg, mathFunc),
                             textAlign: TextAlign.center,
@@ -388,6 +390,7 @@ class _CoinState extends State<Coin> {
                         if (snapshot.hasData) {
                           return Text(
                             snapshot.data!.holder
+                                .toInt()
                                 .toString()
                                 .replaceAllMapped(reg, mathFunc),
                             textAlign: TextAlign.center,
